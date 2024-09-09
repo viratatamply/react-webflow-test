@@ -11,9 +11,9 @@ import { Router, Route } from '@redwoodjs/router'
 
 const Routes = () => {
   return (
-    <Router>
-      <Route notfound page={NotFoundPage} />
-    </Router>
+    <>
+      <p>From React</p>
+    </>
   )
 }
 
