@@ -11,6 +11,7 @@ dns.setDefaultResultOrder('verbatim')
 
 const viteConfig: UserConfig = {
   plugins: [redwood()],
+  base: './',
   build: {
     rollupOptions: {
       output: {
