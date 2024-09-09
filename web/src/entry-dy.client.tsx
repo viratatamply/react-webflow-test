@@ -8,27 +8,31 @@ import { createRoot } from 'react-dom/client'
  * rather than replacing it.
  * https://react.dev/reference/react-dom/client/hydrateRoot
  */
-const header = document.getElementById('[react=header]')
+const headers = document.querySelectorAll('[react=header]')
 
-if (header) {
-  header.replaceChildren()
-  const headerRoot = createRoot(header)
-  const Header = lazy(() => import('src/components/Header/Header'))
-  headerRoot.render(
-    <Suspense fallback={<div className="loading-spinner">Loading...</div>}>
-      <Header />
-    </Suspense>
-  )
+if (headers.length) {
+  headers.forEach((header) => {
+    header.replaceChildren()
+    const headerRoot = createRoot(header)
+    const Header = lazy(() => import('src/components/Header/Header'))
+    headerRoot.render(
+      <Suspense fallback={<div className="loading-spinner">Loading...</div>}>
+        <Header />
+      </Suspense>
+    )
+  })
 }
-const todo = document.getElementById('[react=todo]')
+const todos = document.querySelectorAll('[react=todo]')
 
-if (todo) {
-  todo.replaceChildren()
-  const todoRoot = createRoot(todo)
-  const Todo = lazy(() => import('src/components/Todo/Todo'))
-  todoRoot.render(
-    <Suspense fallback={<div className="loading-spinner">Loading...</div>}>
-      <Todo />
-    </Suspense>
-  )
+if (todos.length) {
+  todos.forEach((todo) => {
+    todo.replaceChildren()
+    const todoRoot = createRoot(todo)
+    const Todo = lazy(() => import('src/components/Todo/Todo'))
+    todoRoot.render(
+      <Suspense fallback={<div className="loading-spinner">Loading...</div>}>
+        <Todo />
+      </Suspense>
+    )
+  })
 }

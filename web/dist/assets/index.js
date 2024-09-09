@@ -7057,19 +7057,23 @@ var m = reactDomExports;
   createRoot = m.createRoot;
   m.hydrateRoot;
 }
-const header = document.getElementById("[react=header]");
-if (header) {
-  header.replaceChildren();
-  const headerRoot = createRoot(header);
-  const Header = reactExports.lazy(() => __vitePreload(() => import("./Header-DDhT_UGq.js"), true ? [] : void 0));
-  headerRoot.render(/* @__PURE__ */ jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "loading-spinner", children: "Loading..." }), children: /* @__PURE__ */ jsxRuntimeExports.jsx(Header, {}) }));
+const headers = document.querySelectorAll("[react=header]");
+if (headers.length) {
+  headers.forEach((header) => {
+    header.replaceChildren();
+    const headerRoot = createRoot(header);
+    const Header = reactExports.lazy(() => __vitePreload(() => import("./Header-DDhT_UGq.js"), true ? [] : void 0));
+    headerRoot.render(/* @__PURE__ */ jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "loading-spinner", children: "Loading..." }), children: /* @__PURE__ */ jsxRuntimeExports.jsx(Header, {}) }));
+  });
 }
-const todo = document.getElementById("[react=todo]");
-if (todo) {
-  todo.replaceChildren();
-  const todoRoot = createRoot(todo);
-  const Todo = reactExports.lazy(() => __vitePreload(() => import("./Todo-HL90d2jx.js"), true ? __vite__mapDeps([0,1]) : void 0));
-  todoRoot.render(/* @__PURE__ */ jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "loading-spinner", children: "Loading..." }), children: /* @__PURE__ */ jsxRuntimeExports.jsx(Todo, {}) }));
+const todos = document.querySelectorAll("[react=todo]");
+if (todos.length) {
+  todos.forEach((todo) => {
+    todo.replaceChildren();
+    const todoRoot = createRoot(todo);
+    const Todo = reactExports.lazy(() => __vitePreload(() => import("./Todo-HL90d2jx.js"), true ? __vite__mapDeps([0,1]) : void 0));
+    todoRoot.render(/* @__PURE__ */ jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "loading-spinner", children: "Loading..." }), children: /* @__PURE__ */ jsxRuntimeExports.jsx(Todo, {}) }));
+  });
 }
 export {
   jsxRuntimeExports as j,
