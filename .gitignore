@@ -7,7 +7,6 @@
 .redwood/*
 !.redwood/README.md
 dev.db*
-dist
 dist-babel
 node_modules
 yarn-error.log
@@ -22,3 +21,7 @@ api/src/lib/generateGraphiQLHeader.*
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+
+# Deployment
+.serverless

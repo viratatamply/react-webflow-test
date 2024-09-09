@@ -1,0 +1,20 @@
+{
+  "index.html": {
+    "file": "assets/index-DnXPztnc.js",
+    "name": "index",
+    "src": "index.html",
+    "isEntry": true,
+    "dynamicImports": [
+      "pages/NotFoundPage/NotFoundPage.tsx"
+    ]
+  },
+  "pages/NotFoundPage/NotFoundPage.tsx": {
+    "file": "assets/NotFoundPage-CexZcXLX.js",
+    "name": "NotFoundPage",
+    "src": "pages/NotFoundPage/NotFoundPage.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html"
+    ]
+  }
+}
