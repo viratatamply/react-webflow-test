@@ -7,29 +7,13 @@
 // 'src/pages/HomePage/HomePage.js'         -> HomePage
 // 'src/pages/Admin/BooksPage/BooksPage.js' -> AdminBooksPage
 
-import { useState } from 'react'
+import { Router, Route } from '@redwoodjs/router'
 
 const Routes = () => {
-  const [count, setCount] = useState(0)
   return (
-    <>
-      <div
-        style={{
-          gap: '1rem',
-          display: 'flex',
-          alignItems: 'center',
-        }}
-      >
-        <p>From React</p>
-        <button
-          onClick={() => {
-            setCount((c) => c + 1)
-          }}
-        >
-          Count : {count}
-        </button>
-      </div>
-    </>
+    <Router>
+      <Route notfound page={NotFoundPage} />
+    </Router>
   )
 }
 

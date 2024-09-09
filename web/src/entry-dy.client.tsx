@@ -1,7 +1,6 @@
-import { hydrateRoot, createRoot } from 'react-dom/client'
+import { lazy, Suspense } from 'react'
 
-import App from './App'
-import Routes from './Routes'
+import { createRoot } from 'react-dom/client'
 
 /**
  * When `#redwood-app` isn't empty then it's very likely that you're using
@@ -9,27 +8,27 @@ import Routes from './Routes'
  * rather than replacing it.
  * https://react.dev/reference/react-dom/client/hydrateRoot
  */
-const redwoodAppElement = document.getElementById('redwood-app')
+const header = document.getElementById('[react=header]')
 
-if (!redwoodAppElement) {
-  throw new Error(
-    "Could not find an element with ID 'redwood-app'. Please ensure it " +
-      "exists in your 'web/src/index.html' file."
+if (header) {
+  header.replaceChildren()
+  const headerRoot = createRoot(header)
+  const Header = lazy(() => import('src/components/Header/Header'))
+  headerRoot.render(
+    <Suspense fallback={<div className="loading-spinner">Loading...</div>}>
+      <Header />
+    </Suspense>
   )
 }
+const todo = document.getElementById('[react=todo]')
 
-if (redwoodAppElement.children?.length > 0) {
-  hydrateRoot(
-    redwoodAppElement,
-    <App>
-      <Routes />
-    </App>
-  )
-} else {
-  const root = createRoot(redwoodAppElement)
-  root.render(
-    <App>
-      <Routes />
-    </App>
+if (todo) {
+  todo.replaceChildren()
+  const todoRoot = createRoot(todo)
+  const Todo = lazy(() => import('src/components/Todo/Todo'))
+  todoRoot.render(
+    <Suspense fallback={<div className="loading-spinner">Loading...</div>}>
+      <Todo />
+    </Suspense>
   )
 }
