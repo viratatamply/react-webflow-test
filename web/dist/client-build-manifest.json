@@ -1,6 +1,6 @@
 {
   "index.html": {
-    "file": "assets/index-BcfESU31.js",
+    "file": "assets/index.js",
     "name": "index",
     "src": "index.html",
     "isEntry": true,
@@ -10,7 +10,7 @@
     ]
   },
   "pages/HomePage/HomePage.tsx": {
-    "file": "assets/HomePage-BKMAqDGi.js",
+    "file": "assets/HomePage-Y4hmZQui.js",
     "name": "HomePage",
     "src": "pages/HomePage/HomePage.tsx",
     "isDynamicEntry": true,
@@ -19,7 +19,7 @@
     ]
   },
   "pages/NotFoundPage/NotFoundPage.tsx": {
-    "file": "assets/NotFoundPage-Bs-Lda6r.js",
+    "file": "assets/NotFoundPage-DCaXBfpr.js",
     "name": "NotFoundPage",
     "src": "pages/NotFoundPage/NotFoundPage.tsx",
     "isDynamicEntry": true,

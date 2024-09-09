@@ -11,6 +11,23 @@ dns.setDefaultResultOrder('verbatim')
 
 const viteConfig: UserConfig = {
   plugins: [redwood()],
+  build: {
+    rollupOptions: {
+      output: {
+        // Keep index.js in the root of the dist folder without a hash
+        entryFileNames: (chunkInfo) => {
+          if (chunkInfo.name === 'index') {
+            return 'assets/index.js'
+          }
+          return 'assets/[name]-[hash].js' // Other entry files go in the assets folder with hash
+        },
+        // Dynamic imports (chunks) go into assets folder with a hash
+        chunkFileNames: 'assets/[name]-[hash].js',
+        // All assets (CSS, images, fonts, etc.) go into assets folder with a hash
+        assetFileNames: 'assets/[name]-[hash].[ext]',
+      },
+    },
+  },
 }
 
 export default defineConfig(viteConfig)
