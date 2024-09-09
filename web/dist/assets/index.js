@@ -7068,9 +7068,9 @@ if (headers.length) {
 }
 const todos = document.querySelectorAll("[react=todo]");
 if (todos.length) {
-  const Todo = reactExports.lazy(() => __vitePreload(() => import("./Todo-HL90d2jx.js"), true ? __vite__mapDeps([0,1]) : void 0));
   todos.forEach((todo) => {
     todo.replaceChildren();
+    const Todo = reactExports.lazy(() => __vitePreload(() => import("./Todo-HL90d2jx.js"), true ? __vite__mapDeps([0,1]) : void 0));
     const todoRoot = createRoot(todo);
     todoRoot.render(/* @__PURE__ */ jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "loading-spinner", children: "Loading..." }), children: /* @__PURE__ */ jsxRuntimeExports.jsx(Todo, {}) }));
   });
