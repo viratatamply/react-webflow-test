@@ -25,10 +25,10 @@ if (headers.length) {
 const todos = document.querySelectorAll('[react=todo]')
 
 if (todos.length) {
+  const Todo = lazy(() => import('src/components/Todo/Todo'))
   todos.forEach((todo) => {
     todo.replaceChildren()
     const todoRoot = createRoot(todo)
-    const Todo = lazy(() => import('src/components/Todo/Todo'))
     todoRoot.render(
       <Suspense fallback={<div className="loading-spinner">Loading...</div>}>
         <Todo />
