@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/Todo-HL90d2jx.js","assets/Todo-BfCvN_lF.css"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./Todo-HL90d2jx.js","./Todo-BfCvN_lF.css"])))=>i.map(i=>d[i]);
 (function polyfill() {
   const relList = document.createElement("link").relList;
   if (relList && relList.supports && relList.supports("modulepreload")) {
@@ -37,26 +37,34 @@ const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/Todo-HL90d2jx.j
   }
 })();
 const scriptRel = "modulepreload";
-const assetsURL = function(dep) {
-  return "/" + dep;
+const assetsURL = function(dep, importerUrl) {
+  return new URL(dep, importerUrl).href;
 };
 const seen = {};
 const __vitePreload = function preload(baseModule, deps, importerUrl) {
   let promise = Promise.resolve();
   if (deps && deps.length > 0) {
-    document.getElementsByTagName("link");
+    const links = document.getElementsByTagName("link");
     const cspNonceMeta = document.querySelector(
       "meta[property=csp-nonce]"
     );
     const cspNonce = (cspNonceMeta == null ? void 0 : cspNonceMeta.nonce) || (cspNonceMeta == null ? void 0 : cspNonceMeta.getAttribute("nonce"));
     promise = Promise.all(
       deps.map((dep) => {
-        dep = assetsURL(dep);
+        dep = assetsURL(dep, importerUrl);
         if (dep in seen) return;
         seen[dep] = true;
         const isCss = dep.endsWith(".css");
         const cssSelector = isCss ? '[rel="stylesheet"]' : "";
-        if (document.querySelector(`link[href="${dep}"]${cssSelector}`)) {
+        const isBaseRelative = !!importerUrl;
+        if (isBaseRelative) {
+          for (let i = links.length - 1; i >= 0; i--) {
+            const link2 = links[i];
+            if (link2.href === dep && (!isCss || link2.rel === "stylesheet")) {
+              return;
+            }
+          }
+        } else if (document.querySelector(`link[href="${dep}"]${cssSelector}`)) {
           return;
         }
         const link = document.createElement("link");
@@ -7062,7 +7070,7 @@ if (headers.length) {
   headers.forEach((header) => {
     header.replaceChildren();
     const headerRoot = createRoot(header);
-    const Header = reactExports.lazy(() => __vitePreload(() => import("./Header-DDhT_UGq.js"), true ? [] : void 0));
+    const Header = reactExports.lazy(() => __vitePreload(() => import("./Header-DDhT_UGq.js"), true ? [] : void 0, import.meta.url));
     headerRoot.render(/* @__PURE__ */ jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "loading-spinner", children: "Loading..." }), children: /* @__PURE__ */ jsxRuntimeExports.jsx(Header, {}) }));
   });
 }
@@ -7070,7 +7078,7 @@ const todos = document.querySelectorAll("[react=todo]");
 if (todos.length) {
   todos.forEach((todo) => {
     todo.replaceChildren();
-    const Todo = reactExports.lazy(() => __vitePreload(() => import("./Todo-HL90d2jx.js"), true ? __vite__mapDeps([0,1]) : void 0));
+    const Todo = reactExports.lazy(() => __vitePreload(() => import("./Todo-HL90d2jx.js"), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url));
     const todoRoot = createRoot(todo);
     todoRoot.render(/* @__PURE__ */ jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "loading-spinner", children: "Loading..." }), children: /* @__PURE__ */ jsxRuntimeExports.jsx(Todo, {}) }));
   });
